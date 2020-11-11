@@ -54,7 +54,7 @@ type AISReport struct {
 	Heading     int16	  `json:"heading"`
 	speed		int16	  `json:"speed"`
 	Destination string    `json:"destination"`
-	ETA         time.Time `json:"eta"`
+	ETA         string    `json:"eta"`
 	Callsign	string	  `json:"callsign"`
 	ShipName	string	  `json:"shipname"`
 	Status      int8	  `json:"status"`
