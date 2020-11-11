@@ -44,6 +44,22 @@ type gpsdReport struct {
 	Class string `json:"class"`
 }
 
+// AISReport AIS data report
+type AISReport struct {
+	Class       string    `json:"class"`
+	MMSI        int32     `json:"mmsi"`
+	IMO         int32     `json:"imo"`
+	Lat         float64   `json:"lat"`
+	Lon         float64   `json:"lon"`
+	Heading     int16	  `json:"heading"`
+	speed		int16	  `json:"speed"`
+	Destination string    `json:"destination"`
+	ETA         time.Time `json:"eta"`
+	Callsign	string	  `json:"callsign"`
+	ShipName	string	  `json:"shipname"`
+	Status      int8	  `json:"status"`
+}
+
 // TPVReport is a Time-Position-Velocity report
 type TPVReport struct {
 	Class  string    `json:"class"`
@@ -293,6 +309,10 @@ func unmarshalReport(class string, bytes []byte) (interface{}, error) {
 	var err error
 
 	switch class {
+	case "AIS":
+		var r *AISReport
+		err = json.Unmarshal(bytes, &r)
+		return r, err
 	case "TPV":
 		var r *TPVReport
 		err = json.Unmarshal(bytes, &r)
