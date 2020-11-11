@@ -6,7 +6,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	gpsd "github.com/atotto/go-gpsd"
+	gpsd "github.com/stnby/go-gpsd"
 )
 
 func main() {
